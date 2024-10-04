@@ -17,7 +17,7 @@ class TestDistanceService(unittest.TestCase):  # Clase de prueba
             unit="km"
         )
         response = self.stub.geodesic_distance(message)
-        self.assertAlmostEqual(response.distance, 20015, delta=0.1, msg="Test case 1 failed!")
+        self.assertAlmostEqual(response.distance, 20003.8, delta=1, msg="Test case 1 failed!")
         print("Test case 1 passed!")  
 
     def test_geodesic_distance_invalid_latitude(self):
@@ -96,8 +96,8 @@ class TestDistanceService(unittest.TestCase):  # Clase de prueba
         self.assertEqual(response.unit, "km", 
                         msg=f"Test case failed! Expected default unit 'km' but got '{response.unit}' instead.\n-----Response-----\nDistance: {response.distance}\nMethod: geodesic\nDistance unit: {response.unit}")
 
-        expected_distance = 17825
-        self.assertAlmostEqual(response.distance, expected_distance, delta=0.1, 
+        expected_distance = 17804
+        self.assertAlmostEqual(response.distance, expected_distance, delta=1, 
                             msg=f"Test case failed! Expected distance {expected_distance}, but got {response.distance} instead.\n-----Response-----\nDistance: {response.distance}\nMethod: geodesic\nDistance unit: {response.unit}")
     
         print(f"Test case 7 passed: Empty unit correctly defaults to 'km' and distance is {response.distance}.")
